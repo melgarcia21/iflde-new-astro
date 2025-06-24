@@ -1,16 +1,28 @@
 ---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+
+// Import your page sections
+import Introduction from '../components/home/Introduction.svelte';
+import Highlights from '../components/home/Highlights.astro';
+import HeroSection from '../components/home/HeroSection.astro';
+import NewsSnippet from '../components/home/NewsSnippet.astro';
+import FAQSection from '../components/home/FAQSection.svelte';
+
+
+import faqsData from '../data/faqs.json'; 
 
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<DefaultLayout 
+  title="IFLDE - Home" 
+  description="Institute of Flexible Learning and Digital Education at Rizal Technological University."
+>
+  <div id="homepage-content" class="flex flex-col">
+    <!-- Svelte components need the `client:load` directive to be interactive -->
+    <Introduction client:load /> 
+    <Highlights />
+    <HeroSection />
+    <NewsSnippet />
+    <!-- Pass the imported FAQ data as a prop to the Svelte component -->
+    <FAQSection client:visible faqCategories={faqsData} />
+  </div>
+</DefaultLayout>

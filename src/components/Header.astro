@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+---
+<header
+  id="header-section"
+  class="relative overflow-hidden bg-cover bg-center text-white font-sans"
+  style="background-image: url('/images/header/rtu-iflde-cover.png');"
+>
+  <div id="header-content" class="relative z-10 h-full flex flex-col p-2 md:p-6">
+    <div id="header-logo-section" class="flex items-center mb-auto">
+      <Image
+        id="header-logo"
+        src="/images/header/rtu-logo.png"
+        alt="RTU Logo"
+        width={100}
+        height={100}
+        class="h-12 w-12 md:h-16 md:w-16 mr-3 md:mr-4 flex-shrink-0"
+      />
+      <div id="header-separator" class="h-10 w-px md:h-12 mr-3 md:mr-4 bg-white"></div>
+      <div id="header-university-text" class="flex flex-col justify-center">
+        <p id="header-university-name" class="text-sm md:text-base lg:text-lg font-bold leading-tight">
+          RIZAL TECHNOLOGICAL UNIVERSITY
+        </p>
+        <p id="header-university-location" class="text-xs md:text-sm">
+          CITIES OF MANDALUYONG AND PASIG
+        </p>
+      </div>
+    </div>
+
+    <div id="header-center-section" class="flex items-center my-2 md:my-4 lg:my-6 ml-0 md:ml-12 lg:ml-20">
+      <Image
+        id="header-icon"
+        src="/images/header/iflde-logo.png"
+        alt="Flexible Learning Icon"
+        width={100}
+        height={100}
+        class="h-24 w-24 md:h-32 md:w-32 lg:h-36 lg:w-36 mr-4 md:mr-8 flex-shrink-0"
+      />
+      <div class="flex flex-col">
+        <h1 id="header-title" class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+          Institute of Flexible Learning
+          <br />
+          and Digital Education
+        </h1>
+        <div id="header-horizontal-line" class="w-full md:w-3/4 h-px my-2 md:my-3 bg-white"></div>
+        <p id="header-subtitle" class="text-sm md:text-base lg:text-lg">
+          Forging Excellence in Borderless and Innovative Education
+        </p>
+      </div>
+    </div>
+  </div>
+</header>

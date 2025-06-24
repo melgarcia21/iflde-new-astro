@@ -1,0 +1,99 @@
+/* src/styles/layout.css */
+
+@import "tailwindcss";
+
+@layer layout {
+    /* Base Layout Styles
+    ----------------------------------------*/
+    html,
+    body {
+        @apply h-full;
+    }
+
+    #__next {
+        @apply min-h-screen flex flex-col;
+    }
+
+    main {
+        @apply flex-grow;
+    }
+
+    /* Navbar Dynamic Styles
+    ----------------------------------------*/
+    /* Main navbar container styling */
+    .navbar {
+        @apply relative z-50 py-4 bg-[#35193E] text-white transition-all duration-300;
+    }
+
+    /* Sticky state for the navbar */
+    .sticky-navbar {
+        @apply fixed top-0 left-0 w-full z-50 bg-[#35193E] shadow-lg;
+    }
+
+    /* Link hover underline effect */
+    .link-text::after {
+        @apply content-[''] absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-100 ease-in-out;
+    }
+
+    /* The 'group' class on the parent Link component triggers this hover effect */
+    .group:hover .link-text::after {
+        @apply w-full;
+    }
+
+    /* Mobile Menu Animations
+    ----------------------------------------*/
+    .mobile-menu {
+        @apply absolute top-full left-0 w-full z-40 bg-[#35193E] shadow-lg md:hidden transform transition-all duration-300 ease-in-out;
+        transform: translateY(-10%);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .mobile-menu.flex {
+        @apply flex-col items-start;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-menu-link {
+        @apply w-full px-6 py-4 flex items-center space-x-3 text-white hover:bg-purple-700 transition-colors;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.15s ease-in-out, transform 0.2s ease-in-out;
+    }
+
+    /* Link Animation Delays */
+    .mobile-menu.flex .mobile-menu-link {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .mobile-menu.flex .mobile-menu-link:nth-child(1) {
+        transition-delay: 0.05s;
+    }
+
+    .mobile-menu.flex .mobile-menu-link:nth-child(2) {
+        transition-delay: 0.1s;
+    }
+
+    .mobile-menu.flex .mobile-menu-link:nth-child(3) {
+        transition-delay: 0.15s;
+    }
+
+    .mobile-menu.flex .mobile-menu-link:nth-child(4) {
+        transition-delay: 0.2s;
+    }
+
+    /* Closing Animation */
+    .mobile-menu.closing {
+        transform: translateY(-10%);
+        opacity: 0;
+        visibility: visible;
+    }
+
+    .mobile-menu.closing .mobile-menu-link {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
