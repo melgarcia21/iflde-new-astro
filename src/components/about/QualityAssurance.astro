@@ -1,0 +1,125 @@
+---
+const qaData = [
+  {
+    id: "internal-qa",
+    title: "Internal QA Processes",
+    items: [
+      "Regular program review and assessment",
+      "Faculty development and training",
+      "Student feedback integration",
+      "Learning outcomes monitoring",
+    ],
+  },
+  {
+    id: "external-qa",
+    title: "External QA Standards",
+    items: [
+      "CHED compliance and recognition",
+      "Industry partner validation",
+      "Accreditation requirements",
+      "External review processes",
+    ],
+  },
+  {
+    id: "assessment-methods",
+    title: "Assessment Methods",
+    items: [
+      "Performance-based evaluation",
+      "Competency verification",
+      "Industry-standard assessment",
+      "Digital credential validation",
+    ],
+  },
+];
+
+const keyMeasures = [
+  {
+    id: "program-standards",
+    title: "Program Standards",
+    text: "Alignment with Philippine Qualifications Framework (PQF) and CHED guidelines",
+  },
+  {
+    id: "learning-support",
+    title: "Learning Support",
+    text: "Comprehensive academic and technical support systems for all students",
+  },
+  {
+    id: "continuous-improvement",
+    title: "Continuous Improvement",
+    text: "Regular program updates based on stakeholder feedback and industry needs",
+  },
+];
+---
+
+<!-- src/components/about/QualityAssurance.astro -->
+<div id="quality-assurance-section" class="max-w-7xl mx-auto px-4 py-20">
+  <h2 id="qa-title" class="text-4xl font-bold mb-8 text-center text-purple-800">
+    Our Commitment to Quality
+  </h2>
+  <p
+    id="qa-description"
+    class="text-lg text-purple-900 leading-relaxed mb-6 text-center max-w-4xl mx-auto"
+  >
+    At RTU-IFLDE, we maintain rigorous quality assurance processes aligned with
+    CHED standards to ensure excellence in all our educational offerings.
+  </p>
+  <div
+    id="qa-grid"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10"
+  >
+    {
+      qaData.map((section) => (
+        <div
+          id={`${section.id}-card`}
+          class="bg-white p-8 rounded-xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+        >
+          <h3
+            id={`${section.id}-header`}
+            class="text-xl font-semibold mb-4 text-purple-950"
+          >
+            {section.title}
+          </h3>
+          <ul id={`${section.id}-list`} class="space-y-4 mt-6 list-disc pl-6">
+            {section.items.map((item, idx) => (
+              <li
+                id={`${section.id}-item-${idx}`}
+                class="text-gray-600 hover:text-purple-600 transition-colors duration-300"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+
+  <div
+    id="key-measures-highlight"
+    class="bg-gradient-to-br from-purple-50 to-white p-8 rounded-2xl border border-purple-100 my-8 transform hover:scale-[1.02] transition-all duration-300"
+  >
+    <h3
+      id="key-measures-title"
+      class="text-xl font-semibold mb-4 text-purple-950 text-center"
+    >
+      Key Quality Measures
+    </h3>
+    <div id="key-measures-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {
+        keyMeasures.map((measure) => (
+          <div id={`${measure.id}-measure`}>
+            <h4
+              id={`${measure.id}-header`}
+              class="text-lg font-semibold text-purple-800 mb-2"
+            >
+              {measure.title}
+            </h4>
+            <p id={`${measure.id}-text`} class="text-gray-600">
+              {measure.text}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

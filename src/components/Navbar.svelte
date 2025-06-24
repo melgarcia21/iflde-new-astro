@@ -26,7 +26,7 @@
     },
 
     {
-      href: "/about",
+      href: "about",
       label: "About",
       icon: Layers,
     },
@@ -37,7 +37,7 @@
       icon: Newspaper,
     },
     {
-      href: "/contact",
+      href: "contact",
       label: "Contact",
       icon: Phone,
     },

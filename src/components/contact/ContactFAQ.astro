@@ -1,0 +1,44 @@
+---
+import Accordion from "../ui/Accordion.svelte"; // 1. Import the new Svelte component
+
+// Data remains the same
+const faqs = [
+  {
+    question: "What is ETEEAP and am I eligible?",
+    answer:
+      "ETEEAP is a program that allows professionals to earn a college degree by recognizing their work experience and prior learning. Eligibility generally requires being a Filipino citizen, at least high school graduate, with at least five years of relevant work experience. For specifics, please check our Programs page or contact us directly.",
+  },
+  {
+    question: "How do I enroll in a micro-credential program?",
+    answer:
+      "You can find a list of our available micro-credential programs on the Programs page. Each program will have its own set of requirements and an application link. If you have trouble, feel free to send us a message using the form above.",
+  },
+  {
+    question: "What are the office hours for IFLDE?",
+    answer:
+      "Our office is open from Monday to Friday, 8:00 AM to 5:00 PM. We recommend sending an email or using the contact form for the quickest response.",
+  },
+  {
+    question: "Who should I contact for partnership inquiries?",
+    answer:
+      "For institutional or corporate partnership inquiries, please direct your message to our director, Mrs. Faith Micah Abenes-Balbin, using the contact form. Please specify 'Partnership Inquiry' in your message.",
+  },
+];
+---
+
+<section id="faq-section" class="bg-white py-16 sm:py-24">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="text-center animate-fadeInUp">
+      <h2 class="text-4xl font-bold tracking-tight text-purple-950">
+        Frequently Asked Questions
+      </h2>
+      <p class="mt-4 text-lg text-gray-600">
+        Can't find the answer you're looking for? We're just a message away.
+      </p>
+    </div>
+    <div class="mt-12">
+      <!-- 2. Use the Accordion component, passing the data and adding a client directive -->
+      <Accordion items={faqs} client:load />
+    </div>
+  </div>
+</section>

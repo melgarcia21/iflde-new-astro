@@ -1,0 +1,17 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import ContactHero from '../components/contact/ContactHero.astro'; // Use the new unified component
+import ContactForm from '../components/contact/ContactForm.svelte';
+import ContactFAQ from '../components/contact/ContactFAQ.astro';
+// No longer importing ContactDetails
+---
+<DefaultLayout 
+  title="Contact Us - RTU-IFLDE"
+  description="Get in touch with the RTU-IFLDE team. Find our location, send us a message, or explore our frequently asked questions."
+>
+  <div id="contact-page-container" class="bg-gray-50">
+    <ContactHero />
+    <ContactForm client:load />
+    <ContactFAQ />
+  </div>
+</DefaultLayout>

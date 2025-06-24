@@ -1,0 +1,62 @@
+/* Animation Keyframes */
+
+@layer utilities {
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideRight {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes bounceIn {
+    0% { opacity: 0; transform: scale(0.3); }
+    50% { opacity: 0.9; transform: scale(1.1); }
+    80% { opacity: 1; transform: scale(0.89); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* Note: Tailwind's `animate-pulse` is very similar, but we'll use your custom one */
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(129, 140, 248, 0.4); } /* Using a purple color to match the theme */
+    70% { box-shadow: 0 0 0 10px rgba(129, 140, 248, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(129, 140, 248, 0); }
+  }
+  
+  /* Adding animation utility classes */
+  .animate-fadeIn { animation: fadeIn 1s ease-out; }
+  .animate-fadeInUp { animation: fadeInUp 0.8s ease-out; }
+  .animate-slideRight { animation: slideRight 0.6s ease-out; }
+  .animate-scaleIn { animation: scaleIn 0.8s ease-out; }
+  .animate-bounceIn { animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+  .animate-pulse-custom { animation: pulse 2s infinite; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

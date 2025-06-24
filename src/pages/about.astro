@@ -1,0 +1,34 @@
+---
+/* src\pages\about.astro */
+
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import AboutInstitute from '../components/about/AboutInstitute.svelte';
+import FlexiLearnPro from '../components/about/FlexiLearnPro.astro';
+import ETEEAPExplained from '../components/about/ETEEAPExplained.astro';
+import MicroCredentials from '../components/about/MicroCredentials.astro';
+import QualityAssurance from '../components/about/QualityAssurance.astro';
+import Partners from '../components/about/Partners.astro';
+import BackToTop from '../components/ui/BackToTop.svelte';
+---
+
+<DefaultLayout 
+  title="About RTU-IFLDE" 
+  description="Learn about RTU's Institute of Flexible Learning and Digital Education, our mission, programs, and partnerships."
+>
+  <div id="about-page-container" class="relative">
+    
+    <!-- This Svelte component loads JS only when it becomes visible -->
+    <AboutInstitute client:visible />
+    
+    <!-- These Astro components are pure static HTML -->
+    <FlexiLearnPro />
+    <ETEEAPExplained />
+    <MicroCredentials />
+    <QualityAssurance />
+    <Partners />
+
+    <!-- This Svelte component loads JS immediately to listen for scroll events -->
+    <BackToTop client:load />
+
+  </div>
+</DefaultLayout>

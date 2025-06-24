@@ -1,0 +1,166 @@
+---
+const processSteps = [
+  {
+    id: "assessment",
+    title: "Initial Assessment",
+    description: "Evaluation of professional experience and prior learning",
+    icon: "📋",
+  },
+  {
+    id: "analysis",
+    title: "Gap Analysis",
+    description: "Identification of required additional coursework",
+    icon: "🔍",
+  },
+  {
+    id: "learning",
+    title: "Learning Activities",
+    description: "Completion of necessary courses and requirements",
+    icon: "📚",
+  },
+  {
+    id: "final",
+    title: "Final Assessment",
+    description: "Comprehensive evaluation of competencies",
+    icon: "🎯",
+  },
+];
+
+const benefits = [
+  "Recognition of work experience and prior learning",
+  "Flexible learning pathways",
+  "Accelerated degree completion",
+  "Career advancement opportunities",
+];
+const whoCanApply = [
+  "Working professionals with relevant experience",
+  "Individuals with non-formal training",
+  "Technical-vocational graduates",
+  "Industry practitioners",
+];
+---
+
+<!-- src/components/about/ETEEAPExplained.astro -->
+<section id="eteeap-section" class="py-20">
+  <div id="eteeap-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2
+      id="eteeap-title"
+      class="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-purple-800"
+    >
+      Understanding ETEEAP
+    </h2>
+
+    <div
+      id="eteeap-what-is"
+      class="bg-white rounded-2xl shadow-xl p-8 mb-12 transform hover:scale-[1.02] transition-all duration-300"
+    >
+      <h3
+        id="what-is-title"
+        class="text-2xl font-semibold text-purple-800 mb-4"
+      >
+        What is ETEEAP?
+      </h3>
+      <p id="what-is-description" class="text-lg text-gray-600 leading-relaxed">
+        The Expanded Tertiary Education Equivalency and Accreditation Program
+        (ETEEAP) is an educational assessment scheme that recognizes knowledge,
+        skills, and prior learning obtained by individuals from non-formal and
+        informal educational experiences.
+      </p>
+    </div>
+
+    <!-- Inlined Process Diagram -->
+    <div id="process-diagram" class="relative py-12">
+      <div
+        id="process-diagram-line"
+        class="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-purple-100 via-purple-200 to-purple-100 hidden md:block transform -translate-y-1/2"
+      >
+      </div>
+      <div
+        id="process-diagram-grid"
+        class="grid grid-cols-1 md:grid-cols-4 gap-8"
+      >
+        {
+          processSteps.map((step, index) => (
+            <div id={`${step.id}-step`} class="relative group">
+              <div
+                id={`${step.id}-badge`}
+                class="absolute -top-4 -left-4 w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center text-sm font-bold z-10"
+              >
+                {index + 1}
+              </div>
+              <div
+                id={`${step.id}-card`}
+                class="bg-white p-6 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-2"
+              >
+                <div
+                  id={`${step.id}-icon-wrapper`}
+                  class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-50 to-white flex items-center justify-center text-3xl shadow-inner"
+                >
+                  {step.icon}
+                </div>
+                <h4
+                  id={`${step.id}-step-title`}
+                  class="text-xl font-semibold text-purple-800 mb-3 text-center"
+                >
+                  {step.title}
+                </h4>
+                <p
+                  id={`${step.id}-step-description`}
+                  class="text-gray-600 text-center text-sm"
+                >
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div id="eteeap-details-grid" class="mt-16 grid md:grid-cols-2 gap-8">
+      <div
+        id="benefits-card"
+        class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300"
+      >
+        <h4
+          id="benefits-title"
+          class="text-xl font-semibold text-purple-800 mb-4"
+        >
+          Benefits
+        </h4>
+        <ul id="benefits-list" class="space-y-3 text-gray-600">
+          {
+            benefits.map((benefit, idx) => (
+              <li id={`benefit-item-${idx}`} class="flex items-center">
+                <span class="w-2 h-2 bg-purple-900 rounded-full mr-3 flex-shrink-0" />
+                {benefit}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div
+        id="who-can-apply-card"
+        class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300"
+      >
+        <h4
+          id="who-can-apply-title"
+          class="text-xl font-semibold text-purple-800 mb-4"
+        >
+          Who Can Apply?
+        </h4>
+        <ul id="who-can-apply-list" class="space-y-3 text-gray-600">
+          {
+            whoCanApply.map((who, idx) => (
+              <li id={`who-item-${idx}`} class="flex items-center">
+                <span class="w-2 h-2 bg-purple-900 rounded-full mr-3 flex-shrink-0" />
+                {who}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

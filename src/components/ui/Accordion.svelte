@@ -1,51 +1,65 @@
 <script lang="ts">
-  import { slide } from 'svelte/transition';
+  import { slide } from "svelte/transition";
+  import { ChevronDown } from "lucide-svelte";
 
-  // --- PROPS ---
-  // The component expects an array of objects with a 'question' and 'answer'
-  export let items: { question: string; answer:string }[] = [];
+  export let items: { question: string; answer: string }[] = [];
 
-  // --- STATE ---
-  // This variable tracks which item is currently open. null means all are closed.
   let activeIndex: number | null = null;
 
-  // --- LOGIC ---
   function toggleItem(index: number) {
-    // If the clicked item is already open, close it. Otherwise, open the clicked item.
     activeIndex = activeIndex === index ? null : index;
   }
 </script>
 
-<div class="w-full">
+<div class="w-full space-y-3">
   {#each items as item, index}
-    <div class="border-b border-gray-300/60">
-      <h3 class="flex w-full">
-        <!-- The trigger is a button for accessibility -->
+    <div class="accordion-item" class:active={activeIndex === index}>
+      <h2>
         <button
           on:click={() => toggleItem(index)}
-          class="flex flex-1 items-center justify-between py-4 text-lg font-medium text-left transition-all hover:underline"
+          aria-expanded={activeIndex === index}
+          class="accordion-trigger"
         >
-          <span>{item.question}</span>
-          <!-- The icon rotates based on the active state -->
-          <svg
-            class="h-4 w-4 shrink-0 transition-transform duration-200"
-            class:rotate-180={activeIndex === index}
-            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          >
-            <path d="m6 9 6 6 6-6"/>
-          </svg>
-        </button>
-      </h3>
+          <span class="text-left font-semibold text-purple-900">
+            {item.question}
+          </span>
 
-      <!-- The content panel slides open and closed -->
+          <!-- This type of directive is not valid on components: class:rotate-180={activeIndex === index} -->
+          <ChevronDown
+            class="h-5 w-5 shrink-0 text-purple-600 transition-transform duration-300 {activeIndex ===
+            index
+              ? 'rotate-180'
+              : ''}"
+          />
+        </button>
+      </h2>
+
       {#if activeIndex === index}
-        <div transition:slide={{ duration: 250 }} class="overflow-hidden text-lg text-gray-600">
-          <div class="pb-4 pt-0">
-            <p>{item.answer}</p>
-          </div>
+        <div transition:slide={{ duration: 300 }} class="accordion-content">
+          <p class="text-gray-600 leading-relaxed">
+            {item.answer}
+          </p>
         </div>
       {/if}
     </div>
   {/each}
 </div>
+
+<style lang="postcss">
+  @reference "tailwindcss";
+
+  .accordion-item {
+    @apply w-full rounded-lg bg-purple-50 border border-purple-200/80 transition-all duration-300;
+  }
+  .accordion-item.active {
+    @apply bg-white shadow-lg;
+  }
+
+  .accordion-trigger {
+    @apply flex w-full items-center justify-between p-5 text-left;
+  }
+
+  .accordion-content {
+    @apply overflow-hidden px-5 pb-5 pt-0;
+  }
+</style>
