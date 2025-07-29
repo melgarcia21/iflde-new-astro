@@ -201,7 +201,9 @@
   </div>
 </nav>
 
-<style>
+<style lang="postcss">
+
+  @reference "tailwindcss";
   /* Navbar Dynamic Styles */
   .navbar {
     position: relative;
